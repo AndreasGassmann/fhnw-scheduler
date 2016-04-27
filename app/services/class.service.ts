@@ -23,7 +23,7 @@ export class ClassService {
         let body = res.json();
 
         console.log(body._embedded);
-        return body._embedded.modul || { };
+        return body._embedded.event || { };
     }
 
     private handleError (error: any) {

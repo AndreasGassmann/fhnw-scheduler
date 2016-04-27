@@ -16,6 +16,13 @@
      {{description}}
   </p>
   <p>
+    <ion-list>
+      <button ion-item *ngFor="#c of classes" (click)="toggleModule()">
+        EventID: {{c.idevent}}
+      </button>
+    </ion-list>
+  </p>
+  <p>
     <ion-checkbox [(ngModel)]="hasModule" (click)="toggleModule()"></ion-checkbox>
   </p>
 

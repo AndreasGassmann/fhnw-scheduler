@@ -48,7 +48,7 @@ export class ModuleDetailPage {
     _classService.getClassesByModule(this.selectedItem)
         .subscribe(
             classes => {
-              console.log(classes);
+              this.classes = classes;
             },
             error =>  console.log(error)
         );
