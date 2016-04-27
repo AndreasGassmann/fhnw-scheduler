@@ -7,7 +7,7 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="#modul of modules" (click)="itemTapped($event, item)">
+    <button ion-item *ngFor="#modul of modules" (click)="itemTapped($event, modul.idmodul)">
       <ion-icon [name]="modul.icon" item-left></ion-icon>
       {{modul.short}}
       <div class="item-note" item-right>

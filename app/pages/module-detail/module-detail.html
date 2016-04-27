@@ -3,18 +3,18 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Module {{name}}</ion-title>
+  <ion-title>{{short}}</ion-title>
 </ion-navbar>
 
 
 <ion-content padding class="module-detail">
 
-  <h3>Getting Started</h3>
+  <h3>Modulnummer: {{id}}</h3>
   <p>
-     Get it started!
+     {{description}}
   </p>
   <p>
-    <button primary menuToggle>Toggle Menu</button>
+    <ion-checkbox [(ngModel)]="hasModule"></ion-checkbox>
   </p>
 
 </ion-content>

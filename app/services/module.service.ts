@@ -12,23 +12,33 @@ export class ModuleService {
     }
 
     getModules(): Observable<any> {
-
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-
         return this.http.get('http://fhnw.papers.ch/apigility/public/v1/modul')
-            .map(this.extractData)
+            .map(this.extractDataModules)
             .catch(this.handleError);
     }
 
-    private extractData(res) {
+    getModuleById(id: number): Observable<any> {
+        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/modul/' + id)
+            .map(this.extractDataModule)
+            .catch(this.handleError);
+    }
+
+    private extractDataModules(res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
         let body = res.json();
 
-        console.log(body._embedded.modul);
         return body._embedded.modul || { };
+    }
+
+    private extractDataModule(res) {
+        if (res.status < 200 || res.status >= 300) {
+            throw new Error('Bad response status: ' + res.status);
+        }
+        let body = res.json();
+
+        return body || { };
     }
 
     private handleError (error: any) {
