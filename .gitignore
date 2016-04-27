@@ -8,3 +8,6 @@ plugins/
 *.swp
 .DS_Store
 Thumbs.db
+.idea
+fhnw-scheduler.iml
+ionic.project
