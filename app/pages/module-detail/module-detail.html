@@ -10,16 +10,22 @@
 
   <h3>Modulnummer: {{id}}</h3>
 
-  <ion-icon name="time"></ion-icon>
 
   <p>
      {{description}}
   </p>
   <p>
     <ion-list>
-      <button ion-item *ngFor="#c of classes" (click)="toggleModule()">
-        EventID: {{c.idevent}}
-      </button>
+      <ion-item ion-item *ngFor="#c of classes" (click)="toggleModule()">
+          <ion-avatar item-left>
+              <img src="http://www.fhnw.ch/personen/christoph-denzler/foto/christoph-denzler.jpg">
+            </ion-avatar>
+            <h2>{{c.classname}} - {{c.building}}{{c.room}}</h2>
+            <h3>{{c.responsible}}</h3>
+            <h4>{{c.responsible}}</h4>
+            <h4><ion-icon name="time"></ion-icon> {{c.starttime}} - {{c.endtime}}</h4>
+
+      </ion-item>
     </ion-list>
   </p>
   <p>

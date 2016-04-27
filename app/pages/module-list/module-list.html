@@ -8,13 +8,10 @@
 <ion-content>
   <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="#modul of modules" (click)="itemTapped($event, modul.idmodul)">
-      <ion-icon [name]="modul.icon" item-left></ion-icon>
-      {{modul.short}}
-      <div class="item-note" item-right>
-        {{modul.note}}
-      </div>
-    </button>
+    <ion-item *ngFor="#modul of modules" (click)="itemTapped($event, modul.idmodul)">
+      <h2>{{modul.short}}</h2>
+      <h3>{{modul.description}}</h3>
+    </ion-item>
   </ion-list>
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
