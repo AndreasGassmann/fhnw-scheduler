@@ -7,14 +7,12 @@
 </ion-navbar>
 
 
-<ion-content padding class="my-modules">
+<ion-content class="my-modules">
 
-  <h3>List of my modules (soon tm)</h3>
-  <p>
-     Get it started!
-  </p>
-  <p>
-    <button primary menuToggle>Toggle Menu</button>
-  </p>
+  <ion-list>
+    <ion-item ion-item *ngFor="#c of myClasses">
+      Class ID: {{c}}
+    </ion-item>
+  </ion-list>
 
 </ion-content>

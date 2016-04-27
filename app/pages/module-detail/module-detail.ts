@@ -1,11 +1,11 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {ModuleService} from '../../services/module.service';
-import {MyModulesService} from '../../services/my-modules.service';
+import {MyClassesService} from '../../services/my-classes.service.ts';
 import {ClassService} from '../../services/class.service';
 
 @Page({
   templateUrl: 'build/pages/module-detail/module-detail.html',
-  providers: [ModuleService, MyModulesService, ClassService]
+  providers: [ModuleService, MyClassesService, ClassService]
 })
 export class ModuleDetailPage {
   selectedItem: number;
@@ -24,15 +24,15 @@ export class ModuleDetailPage {
     moduleId: number
   }>;
 
-  _myModulesService: MyModulesService;
+  _myClassesService: MyClassesService;
 
-  constructor(private nav: NavController, navParams: NavParams, _moduleService: ModuleService, _myModulesService: MyModulesService, _classService: ClassService) {
+  constructor(private nav: NavController, navParams: NavParams, _moduleService: ModuleService, _myClassesService: MyClassesService, _classService: ClassService) {
     this.nav = nav;
-    this._myModulesService = _myModulesService;
+    this._myClassesService = _myClassesService;
 
     this.selectedItem = navParams.get('moduleId');
 
-    this.hasModule = _myModulesService.hasModule(this.selectedItem);
+    this.hasModule = _myClassesService.hasClass(this.selectedItem);
 
     _moduleService.getModuleById(this.selectedItem)
         .subscribe(
@@ -54,7 +54,7 @@ export class ModuleDetailPage {
         );
   }
 
-  toggleModule() {
-    this._myModulesService.toggleModule(this.id);
+  toggleClass(id: number) {
+    this._myClassesService.toggleClass(id);
   }
 }
