@@ -6,20 +6,31 @@ import {Observable} from 'rxjs/Observable';
 export class MyModulesService {
     modules: Array<number>;
 
-    constructor() { }
+    constructor() {
+        this.modules = JSON.parse(localStorage.getItem('myModules'));
+        this.modules = this.modules ? this.modules : [];
+    }
+
+    saveToLocalStorage() {
+        localStorage.setItem('myModules', JSON.stringify(this.modules));
+    }
 
     addModule(id: number) {
         if (!this.modules.find(module => module === id)) {
             this.modules.push(id);
         }
+        this.saveToLocalStorage();
     }
 
     removeModule(id: number) {
         this.modules = this.modules.filter(module => module !== id);
+        this.saveToLocalStorage();
     }
 
     hasModule(id: number): boolean {
-        return this.modules.find(module => module === id) ? true : false;
+        console.log('Checking: ' + id);
+        console.log(this.modules.find(module => module === id) ? true : false);
+        return this.modules.find(module => module === id) ? true : false; //TODO: use .include(id), requires ts update
     }
 
     getModules() {
