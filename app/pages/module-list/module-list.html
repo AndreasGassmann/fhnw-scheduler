@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Module List</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="#modul of modules" (click)="itemTapped($event, item)">
+      <ion-icon [name]="modul.icon" item-left></ion-icon>
+      {{modul.short}}
+      <div class="item-note" item-right>
+        {{modul.note}}
+      </div>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>
