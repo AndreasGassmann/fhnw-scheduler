@@ -28,9 +28,9 @@ export class ModuleListPage {
 
   }
 
-  itemTapped(event, item) {
+  itemTapped(event, id) {
     this.nav.push(ModuleDetailPage, {
-      item: item
+      moduleId: id
     })
   }
 }
