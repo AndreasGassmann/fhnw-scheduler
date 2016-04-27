@@ -9,14 +9,17 @@ import {ModuleService} from '../../services/module.service';
 export class ModuleListPage {
   selectedItem: any;
   icons: string[];
+  searchQuery: string;
   modules: Array<{idmodul: number, description: string, short: string}>;
+  allModules: Array<{idmodul: number, description: string, short: string}>;
 
   constructor(private nav: NavController, navParams: NavParams, _moduleService: ModuleService) {
     this.nav = nav;
+    this.searchQuery = '';
 
     _moduleService.getModules()
       .subscribe(
-        modules => this.modules = modules,
+        modules => {this.modules = modules; this.allModules = modules},
         error =>  console.log(error)
       );
 
@@ -25,7 +28,26 @@ export class ModuleListPage {
 
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
+  }
 
+  getItems(searchbar) {
+
+    this.modules = this.allModules
+
+    // set q to the value of the searchbar
+    var q = searchbar.value;
+
+    // if the value is an empty string don't filter the items
+    if (q.trim() == '') {
+      return;
+    }
+
+    this.modules = this.modules.filter((v) => {
+      if (v.short.toLocaleLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    })
   }
 
   itemTapped(event, id) {
@@ -33,4 +55,6 @@ export class ModuleListPage {
       moduleId: id
     })
   }
+
+
 }
