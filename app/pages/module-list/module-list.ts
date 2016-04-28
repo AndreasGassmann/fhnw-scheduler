@@ -1,6 +1,7 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {ModuleDetailPage} from '../module-detail/module-detail';
 import {ModuleService} from '../../services/module.service';
+import {AddModuleModalPage} from "../add-module-modal/add-module-modal";
 
 @Page({
   templateUrl: 'build/pages/module-list/module-list.html',
@@ -54,6 +55,10 @@ export class ModuleListPage {
     this.nav.push(ModuleDetailPage, {
       moduleId: id
     })
+  }
+
+  itemAdd() {
+    this.nav.push(AddModuleModalPage);
   }
 
 

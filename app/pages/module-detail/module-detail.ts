@@ -38,7 +38,7 @@ export class ModuleDetailPage {
     _moduleService.getModuleById(this.selectedItem)
         .subscribe(
             module => {
-              this.id = module.idmodul;
+              this.id = module.idmodule;
               this.short = module.short;
               this.description = module.description;
             },

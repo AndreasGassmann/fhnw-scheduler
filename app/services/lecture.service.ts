@@ -11,7 +11,7 @@ export class LectureService {
     }
 
     getLecturesByModule(id: number): Observable<any> {
-        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/lecture?modul_idmodul=' + id)
+        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/lecture?module_idmodule=' + id)
             .map(this.extractDataLectures)
             .catch(this.handleError);
     }
@@ -28,6 +28,7 @@ export class LectureService {
         }
         let body = res.json();
 
+        console.log(body);
         return body._embedded.lecture || { };
     }
 
