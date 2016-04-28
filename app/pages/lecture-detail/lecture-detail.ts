@@ -30,9 +30,9 @@ export class LectureDetailPage {
     responsible: string;
     moduleId: number;
 
-    myClass: IClass;
+    myLecture: ILecture;
 
-    hasClass: boolean;
+    hasLecture: boolean;
     tasks: any;
 
     _myLecturesService: MyLecturesService;
@@ -43,7 +43,7 @@ export class LectureDetailPage {
 
     this.selectedItem = navParams.get('lectureId');
 
-      this.hasLecture = this._myClassesService.hasLecture(this.selectedItem);
+      this.hasLecture = this._myLecturesService.hasLecture(this.selectedItem);
       console.log(this.hasLecture);
 
     _lectureService.getLectureById(this.selectedItem)
