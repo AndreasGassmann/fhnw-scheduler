@@ -12,13 +12,13 @@ export class ModuleService {
     }
 
     getModules(): Observable<any> {
-        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/modul')
+        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/module')
             .map(this.extractDataModules)
             .catch(this.handleError);
     }
 
     getModuleById(id: number): Observable<any> {
-        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/modul/' + id)
+        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/module/' + id)
             .map(this.extractDataModule)
             .catch(this.handleError);
     }
@@ -29,7 +29,7 @@ export class ModuleService {
         }
         let body = res.json();
 
-        return body._embedded.modul || { };
+        return body._embedded.module || { };
     }
 
     private extractDataModule(res) {
