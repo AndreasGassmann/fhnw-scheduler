@@ -13,8 +13,8 @@
     <ion-list-header>
       Montag
     </ion-list-header>
-    <ion-item ion-item *ngFor="#c of myClasses" (click)="itemTapped($event, c.id)">
-      Class ID: {{c.id}} {{c.c.starttime}} - {{c.c.endtime}}  Raum {{c.c.building}}{{c.c.room}}
+    <ion-item ion-item *ngFor="#c of myLectures" (click)="itemTapped($event, c.id)">
+      Lecture ID: {{c.id}} {{c.c.starttime}} - {{c.c.endtime}}  Raum {{c.c.building}}{{c.c.room}}
     </ion-item>
     <ion-list-header>
       Dienstag

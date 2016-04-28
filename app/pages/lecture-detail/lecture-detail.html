@@ -8,16 +8,16 @@
 
 <ion-content padding class="module-detail">
 
-  <h3>Modulnummer: {{idevent}}</h3>
+  <h3>Modulnummer: {{idlecture}}</h3>
 
 
   <p>
-    Ich besuche dieses Modul: <ion-checkbox [(ngModel)]="hasClass" (click)="toggleClass()"></ion-checkbox>
+    Ich besuche dieses Modul: <ion-checkbox [(ngModel)]="hasLecture" (click)="toggleLecture()"></ion-checkbox>
   </p>
   <p>
-    Events
+    Tasks
     <ion-list>
-      <ion-item ion-item *ngFor="#c of classes">
+      <ion-item ion-item *ngFor="#c of lectures">
           <ion-avatar item-left>
             <img src="http://www.fhnw.ch/personen/christoph-denzler/foto/christoph-denzler.jpg">
           </ion-avatar>

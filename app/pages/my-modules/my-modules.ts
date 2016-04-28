@@ -1,10 +1,10 @@
 import {Page, NavController} from 'ionic-angular';
-import {MyClassesService} from '../../services/my-classes.service.ts';
+import {MyLecturesService} from '../../services/my-lectures.service.ts';
 
-import {ClassDetailPage} from '../class-detail/class-detail';
+import {LectureDetailPage} from '../lecture-detail/lecture-detail';
 
-interface IClass {
-  idevent: number,
+interface ILecture {
+  idlecture: number,
   starttime: string,
   endtime: string,
   building: number,
@@ -16,18 +16,18 @@ interface IClass {
 
 @Page({
   templateUrl: 'build/pages/my-modules/my-modules.html',
-  providers: [MyClassesService]
+  providers: [MyLecturesService]
 })
 export class MyModulesPage {
-  myClasses: Array<{ id: number, c: IClass }>;
+  myLectures: Array<{ id: number, c: ILecture }>;
 
-  constructor(private nav: NavController, _myClassesService: MyClassesService) {
-    this.myClasses = _myClassesService.getClasses();
+  constructor(private nav: NavController, _myLecturesService: MyLecturesService) {
+    this.myLectures = _myLecturesService.getLectures();
   }
 
   itemTapped(event, id) {
-    this.nav.push(ClassDetailPage, {
-      classId: id
+    this.nav.push(LectureDetailPage, {
+      lectureId: id
     })
   }
 

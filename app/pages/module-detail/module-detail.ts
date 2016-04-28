@@ -1,12 +1,12 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {ModuleService} from '../../services/module.service';
-import {MyClassesService} from '../../services/my-classes.service.ts';
-import {ClassService} from '../../services/class.service';
+import {MyLecturesService} from '../../services/my-lectures.service.ts';
+import {LectureService} from '../../services/lecture.service';
 
-import {ClassDetailPage} from '../class-detail/class-detail';
+import {LectureDetailPage} from '../lecture-detail/lecture-detail';
 
-interface IClass {
-    idevent: number,
+interface ILecture {
+    idlecture: number,
     starttime: string,
     endtime: string,
     building: number,
@@ -18,20 +18,20 @@ interface IClass {
 
 @Page({
   templateUrl: 'build/pages/module-detail/module-detail.html',
-  providers: [ModuleService, MyClassesService, ClassService]
+  providers: [ModuleService, MyLecturesService, LectureService]
 })
 export class ModuleDetailPage {
   selectedItem: number;
   id: number;
   short: string;
   description: string;
-  classes: Array<IClass>;
+  lectures: Array<ILecture>;
 
-  _myClassesService: MyClassesService;
+  _myLecturesService: MyLecturesService;
 
-  constructor(private nav: NavController, navParams: NavParams, _moduleService: ModuleService, _myClassesService: MyClassesService, _classService: ClassService) {
+  constructor(private nav: NavController, navParams: NavParams, _moduleService: ModuleService, _myLecturesService: MyLecturesService, _lectureService: LectureService) {
     this.nav = nav;
-    this._myClassesService = _myClassesService;
+    this._myLecturesService = _myLecturesService;
 
     this.selectedItem = navParams.get('moduleId');
 
@@ -45,26 +45,26 @@ export class ModuleDetailPage {
             error =>  console.log(error)
         );
 
-    _classService.getClassesByModule(this.selectedItem)
+    _lectureService.getLecturesByModule(this.selectedItem)
         .subscribe(
-            classes => {
-              this.classes = classes;
+            lectures => {
+              this.lectures = lectures;
             },
             error =>  console.log(error)
         );
   }
 
-  hasClass(id: number) {
-    return this._myClassesService.hasClass(id);
+  hasLecture(id: number) {
+    return this._myLecturesService.hasLecture(id);
   }
 
-  toggleClass(c: IClass) {
-    this._myClassesService.toggleClass(c.idevent, c);
+  toggleLecture(c: ILecture) {
+    this._myLecturesService.toggleLecture(c.idlecture, c);
   }
 
     itemTapped(event, id) {
-        this.nav.push(ClassDetailPage, {
-            classId: id
+        this.nav.push(LectureDetailPage, {
+            lectureId: id
         })
     }
 

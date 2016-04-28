@@ -8,7 +8,7 @@ export class SettingsService {
 
     getSettings() {
         return {
-            getNotificationsBeforeClasses: false,
+            getNotificationsBeforeLectures: false,
             getNotificationsBeforeTasks: false
         };
     }
