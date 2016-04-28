@@ -1,0 +1,23 @@
+<ion-navbar primary>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Einstellungen</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-toggle [(ngModel)]="settings.getNotificationsBeforeClasses" (ngModelChange)="saveSettings($event)"></ion-toggle>
+      <ion-label>
+        Benachrichtigungen 10 Minuten vor Unterricht
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-toggle [(ngModel)]="settings.getNotificationsBeforeTasks" (ngModelChange)="saveSettings($event)"></ion-toggle>
+      <ion-label>
+        Benachrichtigung 2 Stunden vor Aufgabe/Prüfung
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

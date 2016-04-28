@@ -2,6 +2,7 @@ import {App, IonicApp, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {MyModulesPage} from './pages/my-modules/my-modules';
 import {ModuleListPage} from './pages/module-list/module-list';
+import {SettingsListPage} from './pages/settings-list/settings-list';
 import {ModuleDetailPage} from './pages/module-detail/module-detail';
 
 import 'rxjs/Rx';
@@ -19,8 +20,9 @@ class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Getting Started', component: MyModulesPage },
-      { title: 'List', component: ModuleListPage }
+      { title: 'Meine Module', component: MyModulesPage },
+      { title: 'Modulliste', component: ModuleListPage },
+      { title: 'Einstellungen', component: SettingsListPage }
     ];
 
   }
