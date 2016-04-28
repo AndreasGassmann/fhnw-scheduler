@@ -3,6 +3,17 @@ import {ModuleService} from '../../services/module.service';
 import {MyClassesService} from '../../services/my-classes.service.ts';
 import {ClassService} from '../../services/class.service';
 
+interface IClass {
+    idevent: number,
+    starttime: string,
+    endtime: string,
+    building: number,
+    room: string,
+    classname: string,
+    responsible: string,
+    moduleId: number
+}
+
 @Page({
   templateUrl: 'build/pages/module-detail/module-detail.html',
   providers: [ModuleService, MyClassesService, ClassService]
@@ -12,17 +23,7 @@ export class ModuleDetailPage {
   id: number;
   short: string;
   description: string;
-  hasModule: boolean;
-  classes: Array<{
-    idevent: number,
-    starttime: string,
-    endtime: string,
-    building: number,
-    room: string,
-    classname: string,
-    responsible: string,
-    moduleId: number
-  }>;
+  classes: Array<IClass>;
 
   _myClassesService: MyClassesService;
 
@@ -31,8 +32,6 @@ export class ModuleDetailPage {
     this._myClassesService = _myClassesService;
 
     this.selectedItem = navParams.get('moduleId');
-
-    this.hasModule = _myClassesService.hasClass(this.selectedItem);
 
     _moduleService.getModuleById(this.selectedItem)
         .subscribe(
@@ -54,7 +53,11 @@ export class ModuleDetailPage {
         );
   }
 
-  toggleClass(id: number) {
-    this._myClassesService.toggleClass(id);
+  hasClass(id: number) {
+    return this._myClassesService.hasClass(id);
+  }
+
+  toggleClass(c: IClass) {
+    this._myClassesService.toggleClass(c.idevent, c);
   }
 }

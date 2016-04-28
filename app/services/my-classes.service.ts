@@ -2,9 +2,20 @@ import {Injectable} from 'angular2/core';
 import {Http, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 
+interface IClass {
+    idevent: number,
+    starttime: string,
+    endtime: string,
+    building: number,
+    room: string,
+    classname: string,
+    responsible: string,
+    moduleId: number
+}
+
 @Injectable()
 export class MyClassesService {
-    classes: Array<number>;
+    classes: Array<{id: number, c: IClass}>;
 
     constructor() {
         this.classes = JSON.parse(localStorage.getItem('myClasses'));
@@ -15,33 +26,31 @@ export class MyClassesService {
         localStorage.setItem('myClasses', JSON.stringify(this.classes));
     }
 
-    addClass(id: number) {
-        if (!this.classes.find(c => c === id)) {
-            this.classes.push(id);
+    addClass(id: number, c: IClass) {
+        if (!this.classes.find(c => c.id === id)) {
+            this.classes.push({id: id, c: c});
         }
         this.saveToLocalStorage();
     }
 
     removeClass(id: number) {
-        this.classes = this.classes.filter(c => c !== id);
+        this.classes = this.classes.filter(c => c.id !== id);
         this.saveToLocalStorage();
     }
 
     hasClass(id: number): boolean {
-        console.log('Checking: ' + id);
-        console.log(this.classes.find(c => c === id) ? true : false);
-        return this.classes.find(c => c === id) ? true : false; //TODO: use .include(id), requires ts update
+        return this.classes.find(c => c.id === id) ? true : false; //TODO: use .include(id), requires ts update
     }
 
     getClasses() {
         return this.classes;
     }
 
-    toggleClass(id: number) {
+    toggleClass(id: number, c: any) {
         if (this.hasClass(id)) {
             this.removeClass(id);
         } else {
-            this.addClass(id);
+            this.addClass(id, c);
         }
     }
 }

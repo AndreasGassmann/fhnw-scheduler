@@ -24,7 +24,7 @@
             <h3>{{c.responsible}}</h3>
             <h4>{{c.responsible}}</h4>
             <h4><ion-icon name="time"></ion-icon> {{c.starttime}} - {{c.endtime}}</h4>
-        <ion-toggle [(ngModel)]="hasClass" (click)="toggleClass(c.idevent)"></ion-toggle>
+        <ion-toggle [ngModel]="hasClass(c.idevent)" (click)="toggleClass(c)"></ion-toggle>
       </ion-item>
     </ion-list>
   </p>
