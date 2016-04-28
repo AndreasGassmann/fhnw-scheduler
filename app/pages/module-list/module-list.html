@@ -8,7 +8,7 @@
 <ion-content>
   <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="#modul of modules" (click)="itemTapped($event, modul.idmodul)">
+    <ion-item *ngFor="#modul of modules" (click)="itemTapped($event, modul.idmodule)">
       <h2>{{modul.short}}</h2>
       <h3>{{modul.description}}</h3>
     </ion-item>
