@@ -3,6 +3,8 @@ import {ModuleService} from '../../services/module.service';
 import {MyClassesService} from '../../services/my-classes.service.ts';
 import {ClassService} from '../../services/class.service';
 
+import {ClassDetailPage} from '../class-detail/class-detail';
+
 interface IClass {
     idevent: number,
     starttime: string,
@@ -39,7 +41,6 @@ export class ModuleDetailPage {
               this.id = module.idmodul;
               this.short = module.short;
               this.description = module.description;
-
             },
             error =>  console.log(error)
         );
@@ -60,4 +61,11 @@ export class ModuleDetailPage {
   toggleClass(c: IClass) {
     this._myClassesService.toggleClass(c.idevent, c);
   }
+
+    itemTapped(event, id) {
+        this.nav.push(ClassDetailPage, {
+            classId: id
+        })
+    }
+
 }

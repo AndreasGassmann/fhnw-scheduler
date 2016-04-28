@@ -3,41 +3,26 @@ import {Http, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class ClassService {
+export class TaskService {
     http: Http;
 
     constructor(http: Http) {
         this.http = http;
     }
 
-    getClassesByModule(id: number): Observable<any> {
+    getTasksByClass(id: number): Observable<any> {
         return this.http.get('http://fhnw.papers.ch/apigility/public/v1/event?modul_idmodul=' + id)
-            .map(this.extractDataClasses)
+            .map(this.extractDataTasks)
             .catch(this.handleError);
     }
 
-    getClassById(id: number): Observable<any> {
-        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/event/' + id)
-            .map(this.extractDataClass)
-            .catch(this.handleError);
-    }
-
-    private extractDataClasses(res) {
+    private extractDataTasks(res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
         let body = res.json();
 
         return body._embedded.event || { };
-    }
-
-    private extractDataClass(res) {
-        if (res.status < 200 || res.status >= 300) {
-            throw new Error('Bad response status: ' + res.status);
-        }
-        let body = res.json();
-
-        return body || { };
     }
 
     private handleError (error: any) {
