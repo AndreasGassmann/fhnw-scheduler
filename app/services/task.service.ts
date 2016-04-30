@@ -11,7 +11,7 @@ export class TaskService {
     }
 
     getTasksByLecture(id: number): Observable<any> {
-        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/event?modul_idmodul=' + id)
+        return this.http.get('http://fhnw.papers.ch/apigility/public/v1/task?lecture_idlecture=' + id)
             .map(this.extractDataTasks)
             .catch(this.handleError);
     }
@@ -22,7 +22,7 @@ export class TaskService {
         }
         let body = res.json();
 
-        return body._embedded.event || { };
+        return body._embedded.task || { };
     }
 
     private handleError (error: any) {
