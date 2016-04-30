@@ -1,23 +1,29 @@
 import {Injectable} from 'angular2/core';
 import {Http, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
+import {Task} from "../classes/task.class";
 
 @Injectable()
 export class TaskService {
     http: Http;
+    headers: Headers;
 
     constructor(http: Http) {
         this.http = http;
-    }
-
-    addTask(title: string, description: string, due: string, mandatory: boolean, lecture_idlecture: number, cb: Function) {
-        cb();
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
     }
 
     getTasksByLecture(id: number): Observable<any> {
         return this.http.get('http://fhnw.papers.ch/apigility/public/v1/task?lecture_idlecture=' + id)
             .map(this.extractDataTasks)
             .catch(this.handleError);
+    }
+
+    public postTask(task: Task): Observable<any>{
+        return this.http.post("http://fhnw.papers.ch/apigility/public/v1/task", task.toString(), {
+            headers: this.headers
+        });
     }
 
     private extractDataTasks(res) {

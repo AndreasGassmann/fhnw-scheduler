@@ -30,9 +30,13 @@ export class ModuleDetailPage {
 
   _myLecturesService: MyLecturesService;
 
+  addLectureModulePage: typeof AddLectureModalPage;
+
   constructor(private nav: NavController, navParams: NavParams, _moduleService: ModuleService, _myLecturesService: MyLecturesService, _lectureService: LectureService) {
     this.nav = nav;
     this._myLecturesService = _myLecturesService;
+
+    this.addLectureModulePage = AddLectureModalPage;
 
     this.selectedItem = navParams.get('moduleId');
 
@@ -67,10 +71,6 @@ export class ModuleDetailPage {
         this.nav.push(LectureDetailPage, {
             lectureId: id
         })
-    }
-
-    itemAdd() {
-        this.nav.push(AddLectureModalPage);
     }
 
 }

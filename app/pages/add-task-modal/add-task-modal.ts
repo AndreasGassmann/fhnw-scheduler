@@ -1,5 +1,6 @@
 import {Page, Modal, NavController, NavParams, ViewController} from 'ionic-angular';
 import {TaskService} from '../../services/task.service';
+import {Task} from "../../classes/task.class";
 
 interface ILecture {
     idlecture: number,
@@ -17,24 +18,27 @@ interface ILecture {
   providers: [TaskService]
 })
 export class AddTaskModalPage {
-    title: string;
-    description: string;
-    due: string;
-    mandatory: boolean;
-    lecture_idlecture: number;
+    task: Task;
 
     viewCtrl: ViewController;
 
     _myTaskService: TaskService;
 
-  constructor(viewCtrl: ViewController, _myTaskService: TaskService) {
+  constructor(navParams: NavParams, viewCtrl: ViewController, _myTaskService: TaskService) {
       this.viewCtrl = viewCtrl;
       this._myTaskService = _myTaskService;
+      this.task = new Task();
+      this.task.lecture_idlecture = navParams.get('idlecture');
   }
 
     addTask() {
-        this._myTaskService.addTask(this.title, this.description, this.due, this.mandatory, this.lecture_idlecture, () => {});
-        console.log(this.title);
+        this._myTaskService.postTask(this.task)
+            .map(res => res.json())
+            .subscribe(
+                data => this.close(),
+                error => console.log(error),
+                () => this.close()
+            );
     }
 
     close() {
