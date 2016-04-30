@@ -1,17 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
-
-interface ILecture {
-    idlecture: number,
-    starttime: string,
-    endtime: string,
-    building: number,
-    room: string,
-    classname: string,
-    responsible: string,
-    moduleId: number
-}
+import {ILecture} from "../interfaces/lecture.interface";
 
 @Injectable()
 export class MyLecturesService {

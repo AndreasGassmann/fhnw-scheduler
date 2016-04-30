@@ -1,32 +1,33 @@
 import {Page, Modal, NavController, ViewController} from 'ionic-angular';
 import {ModuleService} from '../../services/module.service';
+import {Module} from "../../classes/module.class";
+import {FormBuilder, Validators} from 'angular2/common';
 
-interface ILecture {
-    idlecture: number,
-    starttime: string,
-    endtime: string,
-    building: number,
-    room: string,
-    classname: string,
-    responsible: string,
-    moduleId: number
-}
 
 @Page({
-  templateUrl: 'build/pages/add-module-modal/add-module-modal.html',
-  providers: [ModuleService]
+    templateUrl: 'build/pages/add-module-modal/add-module-modal.html',
+    providers: [ModuleService]
 })
 export class AddModuleModalPage {
-    short: string;
-    title: string;
-    viewCtrl: ViewController;
+    module:Module;
+    title:string;
+    myModuleService:ModuleService;
+    viewCtrl:ViewController;
 
-  constructor(viewCtrl: ViewController,_myModuleService: ModuleService) {
-      this.viewCtrl = viewCtrl;
-  }
+    constructor(viewCtrl:ViewController, _myModuleService:ModuleService) {
+        this.viewCtrl = viewCtrl;
+        this.myModuleService = _myModuleService;
+        this.module = new Module();
+    }
 
     addModule() {
-        console.log(this.short, this.title);
+        this.myModuleService.postModule(this.module)
+            .map(res => res.json())
+            .subscribe(
+                data => this.close(),
+                error => console.log(error),
+                () => this.close()
+            );
     }
 
     close() {

@@ -10,14 +10,15 @@
 </ion-toolbar>
 
 <ion-content>
+
   <ion-list>
 
     <ion-item>
-      <ion-input type="text" [(ngModel)]="short" placeholder="Modulk&uuml;rzel"></ion-input>
+      <ion-input type="text" [(ngModel)]="module.short" placeholder="Modulk&uuml;rzel" required></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="text" [(ngModel)]="title" placeholder="Titel"></ion-input>
+      <ion-input type="text" [(ngModel)]="module.title" placeholder="Titel" required></ion-input>
     </ion-item>
 
   </ion-list>
