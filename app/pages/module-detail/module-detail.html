@@ -24,7 +24,7 @@
                     </h4>
                 </div>
                 <div clear item-right>
-                    <ion-checkbox></ion-checkbox>
+                    <ion-checkbox [ngModel]="hasLecture(l.idlecture)" (click)="toggleLecture(l)"></ion-checkbox>
                 </div>
             </ion-item>
         </ion-list>
