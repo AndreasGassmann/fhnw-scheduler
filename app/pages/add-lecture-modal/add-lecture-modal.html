@@ -1,14 +1,147 @@
 <ion-toolbar primary>
-  <ion-title>
-    Neue Vorlesung hinzufügen
-  </ion-title>
-  <ion-buttons start>
-    <button (click)="close()">
-      <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
+    <ion-title>
+        Neue Vorlesung hinzufügen
+    </ion-title>
+    <ion-buttons start>
+        <button (click)="close()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
 </ion-toolbar>
+<ion-content>
 
-<ion-content padding>
-  <h2>I'm a modal!</h2>
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>Klassenname</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Tag</ion-label>
+            <ion-select [(ngModel)]="day">
+                <ion-option value="0">Montag</ion-option>
+                <ion-option value="1">Dienstag</ion-option>
+                <ion-option value="2">Mittwoch</ion-option>
+                <ion-option value="3">Donnerstag</ion-option>
+                <ion-option value="4">Freitag</ion-option>
+                <ion-option value="5">Samstag</ion-option>
+                <ion-option value="6">Sonntag</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Beginn</ion-label>
+            <ion-select [(ngModel)]="starttime_hour">
+                <ion-option>00</ion-option>
+                <ion-option>01</ion-option>
+                <ion-option>02</ion-option>
+                <ion-option>03</ion-option>
+                <ion-option>04</ion-option>
+                <ion-option>05</ion-option>
+                <ion-option>06</ion-option>
+                <ion-option>07</ion-option>
+                <ion-option>08</ion-option>
+                <ion-option>09</ion-option>
+                <ion-option>10</ion-option>
+                <ion-option>11</ion-option>
+                <ion-option>12</ion-option>
+                <ion-option>13</ion-option>
+                <ion-option>14</ion-option>
+                <ion-option>15</ion-option>
+                <ion-option>16</ion-option>
+                <ion-option>17</ion-option>
+                <ion-option>18</ion-option>
+                <ion-option>19</ion-option>
+                <ion-option>20</ion-option>
+                <ion-option>21</ion-option>
+                <ion-option>22</ion-option>
+                <ion-option>23</ion-option>
+            </ion-select>
+            <ion-select [(ngModel)]="starttime_minute">
+                <ion-option>00</ion-option>
+                <ion-option>05</ion-option>
+                <ion-option>10</ion-option>
+                <ion-option>15</ion-option>
+                <ion-option>20</ion-option>
+                <ion-option>25</ion-option>
+                <ion-option>30</ion-option>
+                <ion-option>35</ion-option>
+                <ion-option>40</ion-option>
+                <ion-option>45</ion-option>
+                <ion-option>50</ion-option>
+                <ion-option>55</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Ende</ion-label>
+            <ion-select [(ngModel)]="endtime_hour">
+                <ion-option>00</ion-option>
+                <ion-option>01</ion-option>
+                <ion-option>02</ion-option>
+                <ion-option>03</ion-option>
+                <ion-option>04</ion-option>
+                <ion-option>05</ion-option>
+                <ion-option>06</ion-option>
+                <ion-option>07</ion-option>
+                <ion-option>08</ion-option>
+                <ion-option>09</ion-option>
+                <ion-option>10</ion-option>
+                <ion-option>11</ion-option>
+                <ion-option>12</ion-option>
+                <ion-option>13</ion-option>
+                <ion-option>14</ion-option>
+                <ion-option>15</ion-option>
+                <ion-option>16</ion-option>
+                <ion-option>17</ion-option>
+                <ion-option>18</ion-option>
+                <ion-option>19</ion-option>
+                <ion-option>20</ion-option>
+                <ion-option>21</ion-option>
+                <ion-option>22</ion-option>
+                <ion-option>23</ion-option>
+            </ion-select>
+            <ion-select [(ngModel)]="endtime_minute">
+                <ion-option>00</ion-option>
+                <ion-option>05</ion-option>
+                <ion-option>10</ion-option>
+                <ion-option>15</ion-option>
+                <ion-option>20</ion-option>
+                <ion-option>25</ion-option>
+                <ion-option>30</ion-option>
+                <ion-option>35</ion-option>
+                <ion-option>40</ion-option>
+                <ion-option>45</ion-option>
+                <ion-option>50</ion-option>
+                <ion-option>55</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>Ort</ion-label>
+            <ion-select [(ngModel)]="campus" >
+                <ion-option>Windisch</ion-option>
+            </ion-select>
+            <ion-input type="text" placeholder="Gebäude"></ion-input>
+            <ion-input type="text" placeholder="Raum"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>Dozent</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Semester</ion-label>
+            <ion-select [(ngModel)]="day">
+                <ion-option value="S116">Frühling 2016</ion-option>
+                <ion-option value="S216">Herbst 2016</ion-option>
+                <ion-option value="S117">Frühling 2017</ion-option>
+                <ion-option value="S217">Herbst 2016</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <button block (click)="addLecture()">Vorlesung hinzufügen</button>
+
 </ion-content>`
