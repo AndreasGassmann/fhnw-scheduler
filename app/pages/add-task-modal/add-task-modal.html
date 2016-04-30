@@ -1,0 +1,31 @@
+<ion-toolbar primary>
+  <ion-title>
+    Task hinzufügen
+  </ion-title>
+  <ion-buttons start>
+    <button (click)="close()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="title" placeholder="Modulk&uuml;rzel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="description" placeholder="Titel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="date" [(ngModel)]="due" placeholder="Titel"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button block (click)="addTask()">Task hinzufügen</button>
+
+</ion-content>
