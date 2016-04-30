@@ -1,13 +1,17 @@
 import {Injectable} from 'angular2/core';
 import {Http, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
+import {Lecture} from "../classes/lecture.class";
 
 @Injectable()
 export class LectureService {
     http: Http;
+    headers: Headers;
 
     constructor(http: Http) {
         this.http = http;
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
     }
 
     getLecturesByModule(id: number): Observable<any> {
@@ -20,6 +24,12 @@ export class LectureService {
         return this.http.get('http://fhnw.papers.ch/apigility/public/v1/lecture/' + id)
             .map(this.extractDataLecture)
             .catch(this.handleError);
+    }
+
+    public postLecture(lecture: Lecture): Observable<any>{
+        return this.http.post("http://fhnw.papers.ch/apigility/public/v1/lecture", lecture.toString(), {
+            headers: this.headers
+        });
     }
 
     private extractDataLectures(res) {
