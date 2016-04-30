@@ -54,12 +54,12 @@ export class ModuleDetailPage {
             );
     }
 
-    hasLecture(id:number) {
+    hasLecture(id: number) {
         return this._myLecturesService.hasLecture(id);
     }
 
-    toggleLecture(c:Lecture) {
-        this._myLecturesService.toggleLecture(c.idlecture, c);
+    toggleLecture(l: Lecture) {
+        this._myLecturesService.toggleLecture(l.idlecture, l);
     }
 
 }

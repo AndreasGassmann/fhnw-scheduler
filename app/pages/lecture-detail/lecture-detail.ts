@@ -3,6 +3,7 @@ import {MyLecturesService} from '../../services/my-lectures.service.ts';
 import {TaskService} from '../../services/task.service';
 import {LectureService} from '../../services/lecture.service';
 import {AddTaskModalPage} from "../add-task-modal/add-task-modal";
+import {MyTasksService} from "../../services/my-tasks.service";
 
 interface ILecture {
     idlecture: number,
@@ -17,7 +18,7 @@ interface ILecture {
 
 @Page({
   templateUrl: 'build/pages/lecture-detail/lecture-detail.html',
-  providers: [TaskService, MyLecturesService, LectureService]
+  providers: [TaskService, MyLecturesService, LectureService, MyTasksService]
 })
 export class LectureDetailPage {
     selectedItem: number;
@@ -38,12 +39,15 @@ export class LectureDetailPage {
 
     _myLecturesService: MyLecturesService;
 
+    _myTasksService: MyTasksService;
+
     addTaskModalPage: typeof AddTaskModalPage;
     taskParams: {idlecture: number};
 
-  constructor(private nav: NavController, navParams: NavParams, _myLecturesService: MyLecturesService, _taskService: TaskService, _lectureService: LectureService) {
+  constructor(private nav: NavController, navParams: NavParams, _myLecturesService: MyLecturesService, _taskService: TaskService, _lectureService: LectureService, _myTasksService: MyTasksService) {
     this.nav = nav;
     this._myLecturesService = _myLecturesService;
+    this._myTasksService = _myTasksService;
 
     this.addTaskModalPage = AddTaskModalPage;
 
@@ -79,7 +83,11 @@ export class LectureDetailPage {
           );
   }
 
-  toggleLecture() {
-    this._myLecturesService.toggleLecture(this.idlecture, this.myLecture);
+    hasTask(id: number) {
+        return this._myTasksService.hasTask(id);
+    }
+
+  toggleTask(id: number) {
+    this._myTasksService.toggleTask(id, this.myLecture);
   }
 }
