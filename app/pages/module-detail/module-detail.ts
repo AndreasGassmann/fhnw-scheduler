@@ -6,28 +6,20 @@ import {LectureService} from '../../services/lecture.service';
 import {LectureDetailPage} from '../lecture-detail/lecture-detail';
 import {AddLectureModalPage} from "../add-lecture-modal/add-lecture-modal";
 import {Lecture} from "../../classes/lecture.class";
-
-interface ILecture {
-    idlecture: number,
-    starttime: string,
-    endtime: string,
-    building: number,
-    room: string,
-    classname: string,
-    responsible: string,
-    moduleId: number
-}
+import {AvatarPipe} from "../../pipes/fhnwavatar.pipe";
 
 @Page({
     templateUrl: 'build/pages/module-detail/module-detail.html',
-    providers: [ModuleService, MyLecturesService, LectureService]
+    providers: [ModuleService, MyLecturesService, LectureService],
+    pipes: [AvatarPipe]
+
 })
 export class ModuleDetailPage {
     selectedItem:number;
     id:number;
     short:string;
     description:string;
-    lectures:Array<ILecture>;
+    lectures:Array<Lecture>;
 
     _myLecturesService:MyLecturesService;
 

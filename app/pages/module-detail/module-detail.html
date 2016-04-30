@@ -13,7 +13,7 @@
         <ion-list>
             <ion-item ion-item *ngFor="#l of lectures">
                 <ion-avatar item-left>
-                    <img src="http://www.fhnw.ch/personen/christoph-denzler/foto/christoph-denzler.jpg">
+                    <img src="{{l | avatar}}">
                 </ion-avatar>
                 <div clear item-left>
                     <h2>{{l.classname}} - {{l.building}}{{l.room}}</h2>
