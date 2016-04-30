@@ -1,11 +1,11 @@
 import {Injectable} from 'angular2/core';
 import {Http, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
-import {ILecture} from "../interfaces/lecture.interface";
+import {Lecture} from "../classes/lecture.class";
 
 @Injectable()
 export class MyLecturesService {
-    lectures: Array<{id: number, c: ILecture}>;
+    lectures: Array<{id: number, c: Lecture}>;
 
     constructor() {
         this.lectures = JSON.parse(localStorage.getItem('myLectures'));
@@ -16,7 +16,7 @@ export class MyLecturesService {
         localStorage.setItem('myLectures', JSON.stringify(this.lectures));
     }
 
-    addLecture(id: number, c: ILecture) {
+    addLecture(id: number, c: Lecture) {
         if (!this.lectures.find(c => c.id === id)) {
             this.lectures.push({id: id, c: c});
         }
