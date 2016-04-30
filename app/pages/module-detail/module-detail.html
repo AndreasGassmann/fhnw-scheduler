@@ -16,11 +16,11 @@
   </p>
   <p>
     <ion-list>
-      <ion-item ion-item *ngFor="#l of lectures" (click)="itemTapped($event, c.idlecture)">
+      <ion-item ion-item *ngFor="#l of lectures" (click)="itemTapped($event, l.idlecture)">
           <ion-avatar item-left>
             <img src="http://www.fhnw.ch/personen/christoph-denzler/foto/christoph-denzler.jpg">
           </ion-avatar>
-            <h2>{{l.classname}} - {{c.building}}{{c.room}}</h2>
+            <h2>{{l.classname}} - {{l.building}}{{l.room}}</h2>
             <h3>{{l.responsible}}</h3>
             <h4>{{l.responsible}}</h4>
             <h4><ion-icon name="time"></ion-icon> {{l.starttime}} - {{l.endtime}}</h4>
