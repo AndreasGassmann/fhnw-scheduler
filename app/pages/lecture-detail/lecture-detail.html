@@ -6,25 +6,19 @@
 </ion-navbar>
 
 
-<ion-content padding class="module-detail">
+<ion-content padding class="lecture-detail">
 
-  <h3>Modulnummer: {{idlecture}}</h3>
+  <h3>{{short}}</h3>
 
 
   <p>
-    Ich besuche dieses Modul: <ion-checkbox [(ngModel)]="hasLecture" (click)="toggleLecture()"></ion-checkbox>
+    Ich besuche diese Vorlesung: <ion-checkbox [(ngModel)]="hasLecture" (click)="toggleLecture()"></ion-checkbox>
   </p>
   <p>
     Tasks
     <ion-list>
-      <ion-item ion-item *ngFor="#c of lectures">
-          <ion-avatar item-left>
-            <img src="http://www.fhnw.ch/personen/christoph-denzler/foto/christoph-denzler.jpg">
-          </ion-avatar>
-            <h2>{{c.classname}} - {{c.building}}{{c.room}}</h2>
-            <h3>{{c.responsible}}</h3>
-            <h4>{{c.responsible}}</h4>
-            <h4><ion-icon name="time"></ion-icon> {{c.starttime}} - {{c.endtime}}</h4>
+      <ion-item ion-item *ngFor="#t of tasks">
+          <h2>{{t | json}}</h2>
       </ion-item>
     </ion-list>
   </p>
