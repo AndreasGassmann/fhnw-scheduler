@@ -17,12 +17,17 @@ interface ILecture {
   providers: [ModuleService]
 })
 export class AddModuleModalPage {
-
+    short: string;
+    title: string;
     viewCtrl: ViewController;
 
   constructor(viewCtrl: ViewController,_myModuleService: ModuleService) {
       this.viewCtrl = viewCtrl;
   }
+
+    addModule() {
+        console.log(this.short, this.title);
+    }
 
     close() {
         this.viewCtrl.dismiss();

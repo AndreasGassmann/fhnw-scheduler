@@ -1,6 +1,6 @@
 <ion-toolbar primary>
   <ion-title>
-    Add new Module
+    Modul hinzufügen
   </ion-title>
   <ion-buttons start>
     <button (click)="close()">
@@ -10,5 +10,18 @@
 </ion-toolbar>
 
 <ion-content padding>
-  <h2>I'm a modal!</h2>
-</ion-content>`
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="short" placeholder="Modulk&uuml;rzel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="title" placeholder="Titel"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button block (click)="addModule()">Modul hinzufügen</button>
+
+</ion-content>
