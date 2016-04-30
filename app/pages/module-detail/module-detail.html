@@ -1,34 +1,37 @@
 <ion-navbar primary>
-  <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
-  <ion-title>{{short}}</ion-title>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{short}}</ion-title>
 </ion-navbar>
-
-
 <ion-content padding class="module-detail">
+    <h3>Modulnummer: {{id}}</h3>
+    <p>
+        {{description}}
+    </p>
+    <p>
+        <ion-list>
+            <ion-item ion-item *ngFor="#l of lectures">
+                <ion-avatar item-left>
+                    <img src="http://www.fhnw.ch/personen/christoph-denzler/foto/christoph-denzler.jpg">
+                </ion-avatar>
+                <div clear item-left>
+                    <h2>{{l.classname}} - {{l.building}}{{l.room}}</h2>
+                    <h3>{{l.responsible}}</h3>
+                    <h4>
+                        <ion-icon name="time"></ion-icon>
+                        {{l.starttime}} - {{l.endtime}}
+                    </h4>
+                </div>
+                <div clear item-right>
+                    <ion-checkbox></ion-checkbox>
+                </div>
+            </ion-item>
+        </ion-list>
+    </p>
 
-  <h3>Modulnummer: {{id}}</h3>
-
-
-  <p>
-     {{description}}
-  </p>
-  <p>
-    <ion-list>
-      <ion-item ion-item *ngFor="#l of lectures" (click)="itemTapped($event, l.idlecture)">
-          <ion-avatar item-left>
-            <img src="http://www.fhnw.ch/personen/christoph-denzler/foto/christoph-denzler.jpg">
-          </ion-avatar>
-            <h2>{{l.classname}} - {{l.building}}{{l.room}}</h2>
-            <h3>{{l.responsible}}</h3>
-            <h4><ion-icon name="time"></ion-icon> {{l.starttime}} - {{l.endtime}}</h4>
-      </ion-item>
-    </ion-list>
-  </p>
-
-  <button [navPush]="[addLectureModalPage, lectureParams]" fab fab-bottom fab-right>
-    <ion-icon name="add"></ion-icon>
-  </button>
+    <button [navPush]="[addLectureModalPage, lectureParams]" fab fab-bottom fab-right>
+        <ion-icon name="add"></ion-icon>
+    </button>
 
 </ion-content>
