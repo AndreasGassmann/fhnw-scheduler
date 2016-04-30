@@ -4,6 +4,7 @@ import {MyLecturesService} from '../../services/my-lectures.service.ts';
 import {LectureService} from '../../services/lecture.service';
 
 import {LectureDetailPage} from '../lecture-detail/lecture-detail';
+import {AddLectureModalPage} from "../add-lecture-modal/add-lecture-modal";
 
 interface ILecture {
     idlecture: number,
@@ -66,6 +67,10 @@ export class ModuleDetailPage {
         this.nav.push(LectureDetailPage, {
             lectureId: id
         })
+    }
+
+    itemAdd() {
+        this.nav.push(AddLectureModalPage);
     }
 
 }
