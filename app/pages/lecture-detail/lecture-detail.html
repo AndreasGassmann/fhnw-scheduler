@@ -18,7 +18,8 @@
     Tasks
     <ion-list>
       <ion-item ion-item *ngFor="#t of tasks">
-          <h2>{{t | json}}</h2>
+        <ion-label>t.title</ion-label>
+        <ion-checkbox [ngModel]="hasTask(t.idtask)" (click)="toggleTask(t.idtask)"></ion-checkbox>
       </ion-item>
     </ion-list>
   </p>
