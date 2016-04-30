@@ -13,12 +13,12 @@
     <ion-list>
         <ion-item>
             <ion-label fixed>Klassenname</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input [(ngModel)]="lecture.classname" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label>Tag</ion-label>
-            <ion-select [(ngModel)]="day">
+            <ion-select [(ngModel)]="lecture.day">
                 <ion-option value="0">Montag</ion-option>
                 <ion-option value="1">Dienstag</ion-option>
                 <ion-option value="2">Mittwoch</ion-option>
@@ -31,7 +31,7 @@
 
         <ion-item>
             <ion-label>Beginn</ion-label>
-            <ion-select [(ngModel)]="starttime_hour">
+            <ion-select [(ngModel)]="lecture.starttime_hour">
                 <ion-option>00</ion-option>
                 <ion-option>01</ion-option>
                 <ion-option>02</ion-option>
@@ -57,7 +57,7 @@
                 <ion-option>22</ion-option>
                 <ion-option>23</ion-option>
             </ion-select>
-            <ion-select [(ngModel)]="starttime_minute">
+            <ion-select [(ngModel)]="lecture.starttime_minute">
                 <ion-option>00</ion-option>
                 <ion-option>05</ion-option>
                 <ion-option>10</ion-option>
@@ -75,7 +75,7 @@
 
         <ion-item>
             <ion-label>Ende</ion-label>
-            <ion-select [(ngModel)]="endtime_hour">
+            <ion-select [(ngModel)]="lecture.endtime_hour">
                 <ion-option>00</ion-option>
                 <ion-option>01</ion-option>
                 <ion-option>02</ion-option>
@@ -101,7 +101,7 @@
                 <ion-option>22</ion-option>
                 <ion-option>23</ion-option>
             </ion-select>
-            <ion-select [(ngModel)]="endtime_minute">
+            <ion-select [(ngModel)]="lecture.endtime_minute">
                 <ion-option>00</ion-option>
                 <ion-option>05</ion-option>
                 <ion-option>10</ion-option>
@@ -119,21 +119,21 @@
 
         <ion-item>
             <ion-label fixed>Ort</ion-label>
-            <ion-select [(ngModel)]="campus" >
+            <ion-select [(ngModel)]="lecture.campus" >
                 <ion-option>Windisch</ion-option>
             </ion-select>
-            <ion-input type="text" placeholder="Gebäude"></ion-input>
-            <ion-input type="text" placeholder="Raum"></ion-input>
+            <ion-input type="text" [(ngModel)]="lecture.building" placeholder="Gebäude"></ion-input>
+            <ion-input type="text" [(ngModel)]="lecture.room" placeholder="Raum"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label fixed>Dozent</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input [(ngModel)]="lecture.responsible" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label>Semester</ion-label>
-            <ion-select [(ngModel)]="day">
+            <ion-select [(ngModel)]="lecture.semester">
                 <ion-option value="S116">Frühling 2016</ion-option>
                 <ion-option value="S216">Herbst 2016</ion-option>
                 <ion-option value="S117">Frühling 2017</ion-option>

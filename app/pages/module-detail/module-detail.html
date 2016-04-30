@@ -22,13 +22,12 @@
           </ion-avatar>
             <h2>{{l.classname}} - {{l.building}}{{l.room}}</h2>
             <h3>{{l.responsible}}</h3>
-            <h4>{{l.responsible}}</h4>
             <h4><ion-icon name="time"></ion-icon> {{l.starttime}} - {{l.endtime}}</h4>
       </ion-item>
     </ion-list>
   </p>
 
-  <button [navPush]="addTaskModalPage" fab fab-bottom fab-right>
+  <button [navPush]="[addLectureModalPage, lectureParams]" fab fab-bottom fab-right>
     <ion-icon name="add"></ion-icon>
   </button>
 

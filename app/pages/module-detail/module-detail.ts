@@ -30,15 +30,17 @@ export class ModuleDetailPage {
 
   _myLecturesService: MyLecturesService;
 
-  addLectureModulePage: typeof AddLectureModalPage;
+  addLectureModalPage: typeof AddLectureModalPage;
+    lectureParams: {idmodule: number};
 
   constructor(private nav: NavController, navParams: NavParams, _moduleService: ModuleService, _myLecturesService: MyLecturesService, _lectureService: LectureService) {
     this.nav = nav;
     this._myLecturesService = _myLecturesService;
 
-    this.addLectureModulePage = AddLectureModalPage;
+    this.addLectureModalPage = AddLectureModalPage;
 
     this.selectedItem = navParams.get('moduleId');
+      this.lectureParams = {idmodule: this.selectedItem};
 
     _moduleService.getModuleById(this.selectedItem)
         .subscribe(
