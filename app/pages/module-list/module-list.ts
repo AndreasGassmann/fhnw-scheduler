@@ -14,7 +14,10 @@ export class ModuleListPage {
   modules: Array<{idmodul: number, description: string, short: string}>;
   allModules: Array<{idmodul: number, description: string, short: string}>;
 
+  addModuleModalPage: typeof AddModuleModalPage;
+
   constructor(private nav: NavController, navParams: NavParams, _moduleService: ModuleService) {
+    this.addModuleModalPage = AddModuleModalPage;
     this.nav = nav;
     this.searchQuery = '';
 
@@ -33,7 +36,7 @@ export class ModuleListPage {
 
   getItems(searchbar) {
 
-    this.modules = this.allModules
+    this.modules = this.allModules;
 
     // set q to the value of the searchbar
     var q = searchbar.value;
@@ -56,10 +59,5 @@ export class ModuleListPage {
       moduleId: id
     })
   }
-
-  itemAdd() {
-    this.nav.push(AddModuleModalPage);
-  }
-
 
 }

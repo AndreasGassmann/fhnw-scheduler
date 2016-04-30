@@ -10,6 +10,10 @@ export class TaskService {
         this.http = http;
     }
 
+    addTask(title: string, description: string, due: string, mandatory: boolean, lecture_idlecture: number, cb: Function) {
+        cb();
+    }
+
     getTasksByLecture(id: number): Observable<any> {
         return this.http.get('http://fhnw.papers.ch/apigility/public/v1/task?lecture_idlecture=' + id)
             .map(this.extractDataTasks)
