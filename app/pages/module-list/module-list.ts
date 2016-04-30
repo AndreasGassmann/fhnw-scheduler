@@ -2,6 +2,7 @@ import {Page, NavController, NavParams} from 'ionic-angular';
 import {ModuleDetailPage} from '../module-detail/module-detail';
 import {ModuleService} from '../../services/module.service';
 import {AddModuleModalPage} from "../add-module-modal/add-module-modal";
+import {Module} from "../../classes/module.class";
 
 @Page({
   templateUrl: 'build/pages/module-list/module-list.html',
@@ -11,8 +12,8 @@ export class ModuleListPage {
   selectedItem: any;
   icons: string[];
   searchQuery: string;
-  modules: Array<{idmodul: number, description: string, short: string}>;
-  allModules: Array<{idmodul: number, description: string, short: string}>;
+  modules: Array<Module>;
+  allModules: Array<Module>;
 
   addModuleModalPage: typeof AddModuleModalPage;
 

@@ -1,24 +1,49 @@
-
 <ion-navbar primary>
-  <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
-  <ion-title>Meine Module</ion-title>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meine Module</ion-title>
 </ion-navbar>
 
-
 <ion-content class="my-modules">
+    <ion-card>
+        <ion-card-content>
+            <table style="width:100%;">
+                <tr>
+                    <td width="33%" style="text-align:center;font-size:1.8em;">
+                        <ion-icon name="restaurant"></ion-icon>
+                    </td>
+                    <td width="33%" style="text-align:center;font-size:1.8em;">
+                        <ion-icon name="restaurant"></ion-icon>
+                    </td>
+                    <td width="33%" style="text-align:center;font-size:1.8em;">
+                        <ion-icon name="restaurant"></ion-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngFor="#menu of menues" style="text-align:center;font-size:1.2em;">{{menu.title}}</td>
+                </tr>
+                <tr>
+                    <td *ngFor="#menu of menues" style="text-align:center;font-size:0.7em;">{{menu.trimmings}}</td>
+                </tr>
+                <tr>
+                    <td *ngFor="#menu of menues" style="text-align:center;font-size:1.2em;">{{menu.priceInt}} SFr.</td>
+                </tr>
+            </table>
+        </ion-card-content>
+    </ion-card>
 
-  <ion-list>
-    <ion-list-header>
-      Montag
-    </ion-list-header>
-    <ion-item ion-item *ngFor="#c of myLectures" (click)="itemTapped($event, c.id)">
-      Lecture ID: {{c.id}} {{c.c.starttime}} - {{c.c.endtime}}  Raum {{c.c.building}}{{c.c.room}}
-    </ion-item>
-    <ion-list-header>
-      Dienstag
-    </ion-list-header>
-  </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Montag
+        </ion-list-header>
+        <ion-item ion-item *ngFor="#c of myLectures" (click)="itemTapped($event, c.id)">
+            Lecture ID: {{c.id}} {{c.c.starttime}} - {{c.c.endtime}} Raum {{c.c.building}}{{c.c.room}}
+        </ion-item>
+        <ion-list-header>
+            Dienstag
+        </ion-list-header>
+    </ion-list>
 
 </ion-content>

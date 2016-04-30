@@ -10,7 +10,7 @@ export class MenuService {
         this.http = http;
     }
 
-    getLecturesByModule(id: number): Observable<any> {
+    getMenues(): Observable<any> {
         return this.http.get('https://www.cs.technik.fhnw.ch/App4Technik/mensa/')
             .map(this.extractDataMenues)
             .catch(this.handleError);
