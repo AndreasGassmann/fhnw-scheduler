@@ -36,6 +36,18 @@ export class MyLecturesService {
         return this.lectures;
     }
 
+    getStructuredLectures(){
+        var arr :  { [id: number] : Lecture[]; } = {};
+        this.lectures.forEach((l) =>{
+            if(arr[l.c.day] == undefined){
+                arr[l.c.day] = [];
+            }
+            arr[l.c.day].push(l.c);
+            console.log(l.c);
+        });
+        return arr;
+    }
+
     toggleLecture(id: number, c: any) {
         if (this.hasLecture(id)) {
             this.removeLecture(id);

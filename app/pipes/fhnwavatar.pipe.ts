@@ -1,8 +1,8 @@
-import {Pipe, PipeTransform} from 'angular2/core';
+import {Pipe} from 'angular2/core';
 import {Lecture} from "../classes/lecture.class";
 
 @Pipe({name: 'avatar'})
-export class AvatarPipe implements PipeTransform {
+export class AvatarPipe{
     transform(lecture: Lecture): string {
         if(!lecture.responsible){
             return "http://www.virtuellefabrik.ch/Portals/0/DNNGo_PhotoAlbums/455/20/fhnw.jpg";

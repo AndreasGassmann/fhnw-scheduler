@@ -1,0 +1,12 @@
+import {Pipe} from 'angular2/core'
+
+@Pipe({
+    name: 'truncate'
+})
+export class TruncatePipe {
+    transform(value: string, args: string[]) : string {
+        let limit = args.length > 0 ? parseInt(args[0], 10) : 10;
+
+        return value.length > limit ? value.substring(0, limit) : value;
+    }
+}
