@@ -13,7 +13,7 @@
         <ion-list>
             <ion-item ion-item *ngFor="#l of lectures">
                 <ion-avatar item-left>
-                    <img src="{{l | avatar}}">
+                    <img src="{{l | avatar | resize}}">
                 </ion-avatar>
                 <div clear item-left>
                     <h2>{{l.classname}} - {{l.building}}{{l.room}}</h2>

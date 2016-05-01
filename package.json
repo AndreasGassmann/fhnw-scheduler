@@ -19,5 +19,12 @@
     "run-sequence": "1.1.5"
   },
   "name": "sidemenustarter",
-  "description": "SidemenuStarter: An Ionic project"
+  "description": "SidemenuStarter: An Ionic project",
+  "cordovaPlugins": [
+    {
+      "locator": "https://github.com/apache/cordova-plugin-whitelist.git",
+      "id": "cordova-plugin-whitelist"
+    }
+  ],
+  "cordovaPlatforms": []
 }

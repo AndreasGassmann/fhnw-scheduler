@@ -8,11 +8,12 @@ import {AddLectureModalPage} from "../add-lecture-modal/add-lecture-modal";
 import {Lecture} from "../../classes/lecture.class";
 import {AvatarPipe} from "../../pipes/fhnwavatar.pipe";
 import {Module} from "../../classes/module.class";
+import {ResizePipe} from "../../pipes/resize.pipe";
 
 @Page({
     templateUrl: 'build/pages/module-detail/module-detail.html',
     providers: [ModuleService, MyLecturesService, LectureService],
-    pipes: [AvatarPipe]
+    pipes: [AvatarPipe, ResizePipe]
 
 })
 export class ModuleDetailPage {
