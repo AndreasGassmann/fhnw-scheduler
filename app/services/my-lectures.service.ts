@@ -39,6 +39,7 @@ export class MyLecturesService {
     }
 
     getLectureById(id:number): Lecture {
+        console.log(this.lectures[id]);
         return this.lectures[id].l;
     }
 

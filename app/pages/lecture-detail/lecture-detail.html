@@ -1,31 +1,54 @@
 <ion-navbar primary>
-  <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
-  <ion-title>{{lecture.module.short}}</ion-title>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{lecture.module.short}} - {{lecture.classname}}</ion-title>
 </ion-navbar>
 
 
-<ion-content padding class="lecture-detail">
+<ion-content class="lecture-detail">
 
-  <h3>{{short}}</h3>
+    <div class="wrap">
+        <img src="http://web.fhnw.ch/technik/projekte/eit/Fruehling2014/Beck/FHNW.jpeg"/>
+        <div class="after"></div>
+        <div class="text_over_image">{{lecture.starttime | truncate : 5}} - {{lecture.endtime | truncate : 5}}</div>
+    </div>
 
+    <ion-item class="colored-item">
+        <ion-checkbox [(ngModel)]="hasLecture" (click)="toggleLecture()" item-left></ion-checkbox>
+        <h2 item-left>{{lecture.module.short}} - {{lecture.classname}}</h2>
+    </ion-item>
 
-  <p>
-    Ich besuche diese Vorlesung: <ion-checkbox [(ngModel)]="hasLecture" (click)="toggleLecture()"></ion-checkbox>
-  </p>
-  <p>
-    Tasks
+    <ion-item>
+        <ion-icon name="pin" item-left></ion-icon>
+        {{lecture.building}}{{lecture.room}}
+        {{lecture.campus}}
+    </ion-item>
+
+    <ion-item *ngIf="lecture.responsible">
+        <ion-icon name="person" item-left></ion-icon>
+        {{lecture.responsible}}
+        <ion-avatar item-right>
+            <img src="{{lecture.responsible | avatar | resize}}">
+        </ion-avatar>
+    </ion-item>
+
+    <ion-item *ngIf="tasks">
+        <ion-icon name="clipboard" item-left></ion-icon>
+        {{tasks.length}} Aufgaben
+        <ion-icon name="add" [navPush]="[addTaskModalPage, taskParams]" item-right></ion-icon>
+    </ion-item>
+
     <ion-list>
-      <ion-item ion-item *ngFor="#t of tasks">
-        <ion-label>t.title</ion-label>
-        <ion-checkbox [ngModel]="hasTask(t.idtask)" (click)="toggleTask(t.idtask)"></ion-checkbox>
-      </ion-item>
+        <ion-item *ngFor="#t of tasks">
+            <ion-checkbox [ngModel]="hasTask(t.idtask)" (click)="toggleTask(t.idtask)" item-left></ion-checkbox>
+            <ion-label>
+                {{t.title}}<br />
+                {{t.description}}
+            </ion-label>
+            <ion-note item-right>{{t.due | truncate:10}}</ion-note>
+        </ion-item>
     </ion-list>
-  </p>
 
-  <button [navPush]="[addTaskModalPage, taskParams]" fab fab-bottom fab-right>
-    <ion-icon name="add"></ion-icon>
-  </button>
 
 </ion-content>

@@ -1,9 +1,64 @@
 .lecture-detail {
 
+  ion-icon{
+    color:#5c5c5c;
+  }
+
+  .avatar{
+    height:24px;
+    width:24px;
+  }
+
   p {
     margin: 20px 0;
     line-height: 22px;
     font-size: 16px;
   }
 
+  h2{
+    color:white;
+  }
+
+  img {
+    width: 100% !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  .wrap {
+    height: auto;
+    margin: auto;
+    text-align: center;
+    position: relative;
+  }
+  .text_over_image {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    height: 100px;
+    font-size: 3.5em;
+  }
+
+  .wrap .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(38, 166, 154, .6);
+  }
+
+  .colored-item {
+    @extend .item;
+    background: rgba(38, 166, 154, 1);
+    border-bottom: 0 !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  .colored-item .item-inner {
+    border-bottom: 0 !important;
+  }
 }

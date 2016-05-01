@@ -5,10 +5,14 @@ import {LectureService} from '../../services/lecture.service';
 import {AddTaskModalPage} from "../add-task-modal/add-task-modal";
 import {MyTasksService} from "../../services/my-tasks.service";
 import {Lecture} from "../../classes/lecture.class";
+import {AvatarPipe} from "../../pipes/fhnwavatar.pipe";
+import {TruncatePipe} from "../../pipes/truncate.pipe";
+import {ResizePipe} from "../../pipes/resize.pipe";
 
 @Page({
     templateUrl: 'build/pages/lecture-detail/lecture-detail.html',
-    providers: [TaskService, MyLecturesService, LectureService, MyTasksService]
+    providers: [TaskService, MyLecturesService, LectureService, MyTasksService],
+    pipes: [AvatarPipe, TruncatePipe, ResizePipe]
 })
 export class LectureDetailPage {
     selectedItem:number;
@@ -31,7 +35,7 @@ export class LectureDetailPage {
         this.addTaskModalPage = AddTaskModalPage;
 
         this.hasLecture = this._myLecturesService.hasLecture(navParams.get('lectureId'));
-        this.lecture = _myLecturesService.getLectureById(navParams.get('lectureId'));
+        this.lecture = this._myLecturesService.getLectureById(navParams.get('lectureId'));
 
         _taskService.getTasksByLectureId(navParams.get('lectureId'))
             .subscribe(
@@ -48,5 +52,9 @@ export class LectureDetailPage {
 
     toggleTask(id:number) {
         this._myTasksService.toggleTask(id, this.lecture);
+    }
+
+    toggleLecture() {
+        this._myLecturesService.toggleLecture(this.lecture.idlecture, this.lecture, this.lecture.module);
     }
 }
