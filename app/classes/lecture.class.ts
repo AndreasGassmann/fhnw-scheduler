@@ -1,3 +1,4 @@
+import {Module} from "./module.class";
 export class Lecture {
     public idlecture: number;
     public starttime: string;
@@ -14,6 +15,8 @@ export class Lecture {
     public starttime_minute: number;
     public endtime_hour: number;
     public endtime_minute: number;
+
+    public module: Module; //optional, kann Module enthalten
     
     public toString = () : string => {
         return JSON.stringify(this);

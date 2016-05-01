@@ -14,7 +14,7 @@ export class LectureService {
         this.headers.append('Content-Type', 'application/json');
     }
 
-    getLecturesByModule(id: number): Observable<any> {
+    getLecturesByModuleId(id: number): Observable<any> {
         return this.http.get('http://fhnw.papers.ch/apigility/public/v1/lecture?module_idmodule=' + id)
             .map(this.extractDataLectures)
             .catch(this.handleError);

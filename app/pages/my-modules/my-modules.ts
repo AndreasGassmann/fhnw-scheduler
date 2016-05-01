@@ -32,6 +32,7 @@ export class MyModulesPage {
   }
 
   itemTapped(event, id) {
+    console.log(id);
     this.nav.push(LectureDetailPage, {
       lectureId: id
     })

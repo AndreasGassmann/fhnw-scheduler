@@ -7,6 +7,7 @@ import {LectureDetailPage} from '../lecture-detail/lecture-detail';
 import {AddLectureModalPage} from "../add-lecture-modal/add-lecture-modal";
 import {Lecture} from "../../classes/lecture.class";
 import {AvatarPipe} from "../../pipes/fhnwavatar.pipe";
+import {Module} from "../../classes/module.class";
 
 @Page({
     templateUrl: 'build/pages/module-detail/module-detail.html',
@@ -15,16 +16,12 @@ import {AvatarPipe} from "../../pipes/fhnwavatar.pipe";
 
 })
 export class ModuleDetailPage {
-    selectedItem:number;
-    id:number;
-    short:string;
-    description:string;
+    module:Module;
     lectures:Array<Lecture>;
 
     _myLecturesService:MyLecturesService;
 
     addLectureModalPage:typeof AddLectureModalPage;
-    lectureParams:{idmodule: number};
 
     constructor(private nav:NavController, navParams:NavParams, _moduleService:ModuleService, _myLecturesService:MyLecturesService, _lectureService:LectureService) {
         this.nav = nav;
@@ -32,20 +29,13 @@ export class ModuleDetailPage {
 
         this.addLectureModalPage = AddLectureModalPage;
 
-        this.selectedItem = navParams.get('moduleId');
-        this.lectureParams = {idmodule: this.selectedItem};
-
-        _moduleService.getModuleById(this.selectedItem)
+        _moduleService.getModuleById(navParams.get('moduleId'))
             .subscribe(
-                module => {
-                    this.id = module.idmodule;
-                    this.short = module.short;
-                    this.description = module.description;
-                },
+                module => this.module = module,
                 error => console.log(error)
             );
 
-        _lectureService.getLecturesByModule(this.selectedItem)
+        _lectureService.getLecturesByModuleId(navParams.get('moduleId'))
             .subscribe(
                 lectures => {
                     this.lectures = lectures;
@@ -59,7 +49,7 @@ export class ModuleDetailPage {
     }
 
     toggleLecture(l: Lecture) {
-        this._myLecturesService.toggleLecture(l.idlecture, l);
+        this._myLecturesService.toggleLecture(l.idlecture, l, this.module);
     }
 
 }
