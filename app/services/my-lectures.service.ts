@@ -38,6 +38,10 @@ export class MyLecturesService {
         return this.lectures;
     }
 
+    getLectureById(id:number): Lecture {
+        return this.lectures[id].l;
+    }
+
     getStructuredLectures(){
         var arr :  { [id: number] : Lecture[]; } = {};
         this.lectures.forEach((l) =>{

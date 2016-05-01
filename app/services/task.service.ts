@@ -14,7 +14,7 @@ export class TaskService {
         this.headers.append('Content-Type', 'application/json');
     }
 
-    getTasksByLecture(id: number): Observable<any> {
+    getTasksByLectureId(id: number): Observable<any> {
         return this.http.get('http://fhnw.papers.ch/apigility/public/v1/task?lecture_idlecture=' + id)
             .map(this.extractDataTasks)
             .catch(this.handleError);

@@ -22,11 +22,9 @@ export class MyModulesPage {
 
   constructor(private nav: NavController, _myLecturesService: MyLecturesService, _myMenuesService: MenuService) {
     this.myLectures = _myLecturesService.getStructuredLectures();
-    console.log(this.myLectures);
-    console.log(_myMenuesService.getMenues());
     _myMenuesService.getMenues()
         .subscribe(
-            menues => {this.menues = menues; console.log(menues);},
+            menues => this.menues = menues,
             error =>  console.log(error)
         );
   }

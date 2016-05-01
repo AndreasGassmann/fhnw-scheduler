@@ -4,90 +4,49 @@ import {TaskService} from '../../services/task.service';
 import {LectureService} from '../../services/lecture.service';
 import {AddTaskModalPage} from "../add-task-modal/add-task-modal";
 import {MyTasksService} from "../../services/my-tasks.service";
-
-interface ILecture {
-    idlecture: number,
-    starttime: string,
-    endtime: string,
-    building: number,
-    room: string,
-    classname: string,
-    responsible: string,
-    moduleId: number
-}
+import {Lecture} from "../../classes/lecture.class";
 
 @Page({
-  templateUrl: 'build/pages/lecture-detail/lecture-detail.html',
-  providers: [TaskService, MyLecturesService, LectureService, MyTasksService]
+    templateUrl: 'build/pages/lecture-detail/lecture-detail.html',
+    providers: [TaskService, MyLecturesService, LectureService, MyTasksService]
 })
 export class LectureDetailPage {
-    selectedItem: number;
+    selectedItem:number;
+    lecture: Lecture;
 
-    idlecture: number;
-    starttime: string;
-    endtime: string;
-    building: number;
-    room: string;
-    classname: string;
-    responsible: string;
-    moduleId: number;
+    hasLecture:boolean;
+    tasks:any;
 
-    myLecture: ILecture;
+    _myLecturesService:MyLecturesService;
 
-    hasLecture: boolean;
-    tasks: any;
+    _myTasksService:MyTasksService;
 
-    _myLecturesService: MyLecturesService;
+    addTaskModalPage:typeof AddTaskModalPage;
+    taskParams:{idlecture: number};
 
-    _myTasksService: MyTasksService;
+    constructor(private nav:NavController, navParams:NavParams, _myLecturesService:MyLecturesService, _taskService:TaskService, _myTasksService:MyTasksService) {
+        this.nav = nav;
+        this._myLecturesService = _myLecturesService;
+        this._myTasksService = _myTasksService;
+        this.addTaskModalPage = AddTaskModalPage;
 
-    addTaskModalPage: typeof AddTaskModalPage;
-    taskParams: {idlecture: number};
+        this.hasLecture = this._myLecturesService.hasLecture(navParams.get('lectureId'));
+        this.lecture = _myLecturesService.getLectureById(navParams.get('lectureId'));
 
-  constructor(private nav: NavController, navParams: NavParams, _myLecturesService: MyLecturesService, _taskService: TaskService, _lectureService: LectureService, _myTasksService: MyTasksService) {
-    this.nav = nav;
-    this._myLecturesService = _myLecturesService;
-    this._myTasksService = _myTasksService;
+        _taskService.getTasksByLectureId(navParams.get('lectureId'))
+            .subscribe(
+                t => {
+                    this.tasks = t;
+                },
+                error => console.log(error)
+            );
+    }
 
-    this.addTaskModalPage = AddTaskModalPage;
-
-    this.selectedItem = navParams.get('lectureId');
-
-      this.taskParams = {idlecture: this.selectedItem};
-
-      this.hasLecture = this._myLecturesService.hasLecture(this.selectedItem);
-      console.log(this.hasLecture);
-
-    _lectureService.getLectureById(this.selectedItem)
-        .subscribe(
-            lecture => {
-                this.idlecture = lecture.idlecture;
-                this.starttime = lecture.starttime;
-                this.endtime = lecture.endtime;
-                this.building = lecture.building;
-                this.room = lecture.room;
-                this.classname = lecture.classname;
-                this.responsible = lecture.responsible;
-                this.moduleId = lecture.moduleId;
-                this.myLecture = lecture;
-            },
-            error =>  console.log(error)
-        );
-
-      _taskService.getTasksByLecture(this.selectedItem)
-          .subscribe(
-              t => {
-                  this.tasks = t;
-              },
-              error =>  console.log(error)
-          );
-  }
-
-    hasTask(id: number) {
+    hasTask(id:number) {
         return this._myTasksService.hasTask(id);
     }
 
-  toggleTask(id: number) {
-    this._myTasksService.toggleTask(id, this.myLecture);
-  }
+    toggleTask(id:number) {
+        this._myTasksService.toggleTask(id, this.lecture);
+    }
 }
