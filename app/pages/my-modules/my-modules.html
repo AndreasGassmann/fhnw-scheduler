@@ -39,18 +39,18 @@
                 {{day}}
             </ion-list-header>
 
-            <ion-card *ngFor="#c of myLectures[i]" (click)="itemTapped($event, c.idlecture)">
-                <div class="image-container">
+            <ion-card *ngFor="#l of myLectures[i]" (click)="itemTapped($event, l.idlecture)">
+                <div class="image-container">{{l.idlecture}}
                     <img src="http://web.fhnw.ch/technik/projekte/eit/Fruehling2014/Beck/FHNW.jpeg"/>
                     <div class="after"></div>
                 </div>
                 <div class="card-avatar">
                     <ion-avatar>
-                        <img src="{{c.responsible | avatar | resize}}">
+                        <img src="{{l.responsible | avatar | resize}}">
                     </ion-avatar>
                 </div>
-                <div class="card-title">{{c.module.short}} - {{c.classname}}</div>
-                <div class="card-subtitle">{{c.starttime | truncate : 5}} - {{c.endtime | truncate : 5}} | Raum {{c.building}}{{c.room}}</div>
+                <div class="card-title">{{l.module.short}} - {{l.classname}}</div>
+                <div class="card-subtitle">{{l.starttime | truncate : 5}} - {{l.endtime | truncate : 5}} | Raum {{l.building}}.{{l.room}}</div>
 
             </ion-card>
         </div>

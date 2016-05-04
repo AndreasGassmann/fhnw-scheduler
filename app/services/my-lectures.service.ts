@@ -39,8 +39,7 @@ export class MyLecturesService {
     }
 
     getLectureById(id:number): Lecture {
-        console.log(this.lectures[id]);
-        return this.lectures[id].l;
+        return this.lectures.find(l => l.id === id).l;
     }
 
     getStructuredLectures(){
